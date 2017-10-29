@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Mayank Lunayach">
+<meta name="keywords" content="Mayank IITK">
+<meta name="author" content="Mayank Lunayach">
+<head>
+    <title>Mayank Lunayach</title>
+
+    {% load staticfiles %}
+{#    CSS files#}
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'me/images/favicon.png'%}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'me/ME.CSS' %}">
+{#    scripts#}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://use.fontawesome.com/dcdef9a075.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+{#    the custom script file#}
+    <script src="{% static 'me/script_me.JS' %}"></script>
+    <script src="{% static 'me/particles.js' %}"></script>
+
+{#    fonts#}
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Delius+Swash+Caps" rel="stylesheet">
+</head>
+
+<body id="particles">
+<div id="load">
+    <div>G</div>
+    <div>N</div>
+    <div>I</div>
+    <div>D</div>
+    <div>A</div>
+    <div>O</div>
+    <div>L</div>
+</div>
+<div class="row" id="r" >
+
+    <div class="col-lg-8 ">
+
+        <div id="intro">
+        <h1 id="me"></h1>
+        <br>
+        <div id="subject"></div>
+        <p id="get">
+        Get into me[
+            <a class="work btn first" >blog</a>
+            <a class="work btn second" >work</a>
+        ]
+
+        </p>
+        <br>
+        <p id="reach">
+        Reach me[
+            <a href="#"><span class="fa fa-facebook-official fa-2x"></span></a>
+            <a href="#"><span class="fa fa-google-plus-official fa-2x"></span></a>
+            <a href="#"><span class="fa fa-twitter fa-2x"></span></a>
+            <a href="#"><span class="fa fa-quora fa-2x"></span></a>
+            <a href="#"><span class="fa fa-linkedin fa-2x"></span></a>
+            <a href="#" ><span class="fa fa-envelope fa-2x"></span></a>
+        ]
+
+        </p>
+
+
+    </div>
+
+    </div>
+    <div class="col-lg-4 photo" id="work-photo" ></div>
+    <div class="col-lg-4 work-toggle"  >
+        *a summer project on item(movie) recommendation using ML <a href="#"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a><br>
+        *now working on a music app <a href="{% url 'music:index'%}"><i class="fa fa-file fa-2x" aria-hidden="true"></i>
+    </a>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<!--For the elements that have not been loaded yet , the script-->
+    <script src="{% static 'me/app.JS' %}"></script>
+
+</body>
+</html>

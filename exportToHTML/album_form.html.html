@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>album_form.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(169,183,198); }
+.s1 { color: rgb(232,191,106); }
+.s2 { color: rgb(106,135,89); }
+.s3 { color: rgb(169,183,198); }
+.s4 { color: rgb(186,186,186); }
+.s5 { color: rgb(232,191,106); }
+.s6 { color: rgb(186,186,186); }
+.s7 { color: rgb(165,194,97); }
+.s8 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+album_form.html</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">{% </span><span class="s1">extends </span><span class="s2">'music/base.html' </span><span class="s0">%}</span><span class="s3"> 
+</span><span class="s0">{% </span><span class="s1">block </span><span class="s4">body </span><span class="s0">%}</span><span class="s3"> 
+ 
+</span><span class="s5">&lt;div </span><span class="s6">class=</span><span class="s7">&quot;container-fluid&quot; </span><span class="s6">style=</span><span class="s7">&quot;</span><span class="s6">background-color</span><span class="s3">: </span><span class="s7">lightgrey</span><span class="s8">;</span><span class="s6">color</span><span class="s3">: </span><span class="s7">black&quot;</span><span class="s5">&gt;</span><span class="s3"> 
+    </span><span class="s5">&lt;div </span><span class="s6">class=</span><span class="s7">&quot;row&quot;</span><span class="s5">&gt;</span><span class="s3"> 
+        </span><span class="s5">&lt;div </span><span class="s6">class=</span><span class="s7">&quot;col-sm-12 &quot;</span><span class="s5">&gt;</span><span class="s3"> 
+            </span><span class="s5">&lt;form </span><span class="s6">class=</span><span class="s7">&quot;form-horizontal&quot; </span><span class="s6">action=</span><span class="s7">&quot;&quot; </span><span class="s6">method=</span><span class="s7">&quot;post&quot; </span><span class="s6">enctype=</span><span class="s7">&quot;multipart/form-data&quot;</span><span class="s5">&gt;</span><span class="s3"> 
+                </span><span class="s0">{% </span><span class="s1">csrf_token </span><span class="s0">%}</span><span class="s3"> 
+                </span><span class="s0">{% </span><span class="s1">include </span><span class="s2">'music/form-template.html' </span><span class="s0">%}</span><span class="s3"> 
+                </span><span class="s5">&lt;div </span><span class="s6">class=</span><span class="s7">&quot;form-group&quot;</span><span class="s5">&gt;</span><span class="s3"> 
+                    </span><span class="s5">&lt;div </span><span class="s6">class=</span><span class="s7">&quot;col-sm-offset-2 col-sm-10&quot;</span><span class="s5">&gt;</span><span class="s3"> 
+                        </span><span class="s5">&lt;button </span><span class="s6">type=</span><span class="s7">&quot;submit&quot; </span><span class="s6">class=</span><span class="s7">&quot;btn btn-success&quot;</span><span class="s5">&gt;</span><span class="s3">Submit</span><span class="s5">&lt;/button&gt;</span><span class="s3"> 
+ 
+                    </span><span class="s5">&lt;/div&gt;</span><span class="s3"> 
+ 
+                </span><span class="s5">&lt;/div&gt;</span><span class="s3"> 
+        </span><span class="s5">&lt;/div&gt;</span><span class="s3"> 
+        </span><span class="s5">&lt;/form&gt;</span><span class="s3"> 
+    </span><span class="s5">&lt;/div&gt;</span><span class="s3"> 
+</span><span class="s5">&lt;/div&gt;</span><span class="s3"> 
+ 
+</span><span class="s0">{% </span><span class="s1">endblock </span><span class="s0">%}</span></pre>
+</body>
+</html>

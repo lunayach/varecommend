@@ -1,0 +1,47 @@
+body{
+    padding-top:50px ;
+    text-align: center;
+    background: url("images/bg5.jpg");
+    background-size: cover;
+}
+
+#con{
+        background: url("images/bg3.jpg");
+        padding-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+
+}
+
+.body{
+    max-width: 250px;
+
+}
+
+.body{
+    margin: 0 auto;
+
+}
+
+input[type="submit"]{
+    margin-top: 10px;
+}
+
+h2{
+    font-family: Arsenal;
+}
+input[type="text"],input[type="password"]{
+
+}
+
+input[type="text"]::placeholder,input[type="password"]::placeholder{
+
+}
+
+#cont{
+    padding-top: 20px;
+}
+
+.alert{
+
+}

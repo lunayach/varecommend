@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>models.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); font-weight: bold; }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(104,151,187); }
+.s3 { color: rgb(0,128,128); }
+.s4 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+models.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">django.db </span><span class="s0">import </span><span class="s1">models 
+</span><span class="s0">from </span><span class="s1">django.core.urlresolvers </span><span class="s0">import </span><span class="s1">reverse 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">Album(models.Model): 
+    artist=models.CharField(max_length=</span><span class="s2">200</span><span class="s1">) 
+    album_name=models.CharField(max_length=</span><span class="s2">250</span><span class="s1">) 
+    genre=models.CharField(max_length=</span><span class="s2">100</span><span class="s1">) 
+    album_logo=models.FileField() 
+ 
+    </span><span class="s0">def </span><span class="s1">get_absolute_url(self): 
+        </span><span class="s0">return </span><span class="s1">reverse(</span><span class="s3">'music:detail'</span><span class="s4">,</span><span class="s1">kwargs={</span><span class="s3">'pk'</span><span class="s1">:self.pk}) 
+ 
+    </span><span class="s0">def </span><span class="s1">__str__(self): 
+        </span><span class="s0">return </span><span class="s1">self.album_name+</span><span class="s3">'-'</span><span class="s1">+self.artist 
+ 
+</span><span class="s0">class </span><span class="s1">Song(models.Model): 
+    album=models.ForeignKey(Album</span><span class="s4">,</span><span class="s1">on_delete=models.CASCADE) 
+    file_type=models.CharField(max_length=</span><span class="s2">10</span><span class="s1">) 
+    song_title=models.CharField(max_length=</span><span class="s2">100</span><span class="s1">) 
+    is_favourite=models.BooleanField(default=</span><span class="s0">False</span><span class="s1">) 
+ 
+    </span><span class="s0">def </span><span class="s1">__str__(self): 
+        </span><span class="s0">return </span><span class="s1">self.song_title</span></pre>
+</body>
+</html>

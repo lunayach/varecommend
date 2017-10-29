@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>views.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); font-weight: bold; }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(204,120,50); }
+.s3 { color: rgb(0,128,128); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+views.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">django.views </span><span class="s0">import </span><span class="s1">generic 
+</span><span class="s0">from </span><span class="s1">.models </span><span class="s0">import </span><span class="s1">Album 
+</span><span class="s0">from </span><span class="s1">django.views.generic.edit </span><span class="s0">import </span><span class="s1">CreateView</span><span class="s2">, </span><span class="s1">UpdateView</span><span class="s2">, </span><span class="s1">DeleteView 
+</span><span class="s0">from </span><span class="s1">django.core.urlresolvers </span><span class="s0">import </span><span class="s1">reverse_lazy 
+ 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth </span><span class="s0">import </span><span class="s1">authenticate</span><span class="s2">, </span><span class="s1">login 
+</span><span class="s0">from </span><span class="s1">.forms </span><span class="s0">import </span><span class="s1">UserForm 
+</span><span class="s0">from </span><span class="s1">django.shortcuts </span><span class="s0">import </span><span class="s1">render</span><span class="s2">, </span><span class="s1">redirect 
+</span><span class="s0">from </span><span class="s1">django.views.generic </span><span class="s0">import </span><span class="s1">View 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">IndexView(generic.ListView): 
+    template_name = </span><span class="s3">'music/index.html'</span><span class="s1"> 
+    context_object_name = </span><span class="s3">'albums'</span><span class="s1"> 
+ 
+ 
+    </span><span class="s0">def </span><span class="s1">get_queryset(self): 
+        </span><span class="s0">return </span><span class="s1">Album.objects.all() 
+ 
+</span><span class="s0">class </span><span class="s1">DetailView(generic.DetailView): 
+    model = Album 
+    template_name = </span><span class="s3">'music/detail.html'</span><span class="s1"> 
+    context_object_name = </span><span class="s3">'albums'</span><span class="s1"> 
+ 
+</span><span class="s0">class </span><span class="s1">AlbumCreate(CreateView): 
+    model = Album 
+    fields = [</span><span class="s3">'artist'</span><span class="s2">, </span><span class="s3">'album_name'</span><span class="s2">, </span><span class="s3">'genre'</span><span class="s2">, </span><span class="s3">'album_logo'</span><span class="s1">] 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">AlbumUpdate(UpdateView): 
+    model = Album 
+    fields = [</span><span class="s3">'artist'</span><span class="s2">, </span><span class="s3">'album_name'</span><span class="s2">, </span><span class="s3">'genre'</span><span class="s2">, </span><span class="s3">'album_logo'</span><span class="s1">] 
+ 
+</span><span class="s0">class </span><span class="s1">AlbumDelete(DeleteView): 
+    model = Album 
+    success_url = reverse_lazy(</span><span class="s3">'music:index'</span><span class="s1">) 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">UserFormView(View): 
+    form_class = UserForm 
+    template_name = </span><span class="s3">'music/registeration_form.html'</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">get(self</span><span class="s2">, </span><span class="s1">request): 
+        form = self.form_class(</span><span class="s0">None</span><span class="s1">) 
+        </span><span class="s0">return </span><span class="s1">render(request</span><span class="s2">, </span><span class="s1">self.template_name</span><span class="s2">, </span><span class="s1">{</span><span class="s3">'form'</span><span class="s1">: form}) 
+ 
+    </span><span class="s0">def </span><span class="s1">post(self</span><span class="s2">, </span><span class="s1">request): 
+        form = self.form_class(request.POST) 
+ 
+        </span><span class="s0">if </span><span class="s1">form.is_valid(): 
+ 
+            user = form.save(commit=</span><span class="s0">False</span><span class="s1">) 
+ 
+            username = form.cleaned_data[</span><span class="s3">'username'</span><span class="s1">] 
+            password = form.cleaned_data[</span><span class="s3">'password'</span><span class="s1">] 
+ 
+            user.set_password(password) 
+            user.save() 
+ 
+            user = authenticate(username=username</span><span class="s2">, </span><span class="s1">password=password) 
+ 
+            </span><span class="s0">if </span><span class="s1">user </span><span class="s0">is not None</span><span class="s1">: 
+ 
+                </span><span class="s0">if </span><span class="s1">user.is_active: 
+                    login(request</span><span class="s2">, </span><span class="s1">user) 
+                    </span><span class="s0">return </span><span class="s1">redirect(</span><span class="s3">'music:index'</span><span class="s1">) 
+ 
+        </span><span class="s0">return </span><span class="s1">render(request</span><span class="s2">, </span><span class="s1">self.template_name</span><span class="s2">, </span><span class="s1">{</span><span class="s3">'form'</span><span class="s1">: form}) 
+</span></pre>
+</body>
+</html>
